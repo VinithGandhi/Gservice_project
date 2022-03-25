@@ -1,16 +1,17 @@
 import React from 'react';
-import '../style/custom.css';
-import { Container, Row, Col, Form, Button, InputGroup, FormControl, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faCircleUser, faUser, faCartShopping, faBars, faMobile, faLocationDot, faSearch, faEnvelope, faComment, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser, faUser, faMobile, faSearch, faEnvelope, faComment, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import HeaderComp from '../components/header';
+import FooterComp from '../components/footer';
 
 
 function HomePage(props) {
     var settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 5,
@@ -18,400 +19,359 @@ function HomePage(props) {
         arrows: true
     };
     var banner_settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: true
+        arrows: true,
+        autoplay: true,
+
     };
 
     return (
         <>
-            <section id='home_section'>
-                <div className='mainheader'>
-                    <Container className='pd-10'>
-                        <Row>
-                            <Col lg={3} className='margin_a'>
-                                <div className='header_left_m'>
-                                    <div className='cnt service_cnt'>
-                                        <h6><FontAwesomeIcon icon={faBars} /> &nbsp;Services</h6>
-
-                                        <div className='services_cnt'>
-                                            <p>Menu one</p>
-                                            <p>Menu two</p>
-                                            <p>Menu three</p>
-                                            <p>Menu four</p>
-                                            <p>Menu five</p>
-                                            <p>Menu six</p>
-                                            <p>Menu seven</p>
-                                            <p>Menu Eight</p>
-                                            <p>Menu nine</p>
-                                            <p>Menu ten</p>
+            <HeaderComp />
+            <main role="main">
+                <section id='main_banner'>
+                    <Container fluid className='bg-semi-dark' style={{ paddingBottom: 80 }} >
+                        <Container>
+                            <div className='intro-section'>
+                                <Row>
+                                    <Col>
+                                        <div className='pdb-20'>
+                                            <h1 className='intro-section-header'>HOW CAN WE HELP YOU TODAY?</h1>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col className='pdb-10'>
+                                        <div className='banner_menu'>
+                                            <Slider {...settings}>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu one</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu two</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu Three</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu four</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu five</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu six</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu seven</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu eight</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu nine</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu ten</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu eleven</p>
+                                                </div>
+                                                <div className='banner_menu_cnt'>
+                                                    <img src="./assets/img/menu_img.png" alt="menu" />
+                                                    <p>Menu twelve</p>
+                                                </div>
+                                            </Slider>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <div className='search_suggestions'>
+                                            <InputGroup className="mb-3">
+                                                <FormControl
+                                                    placeholder="Type the service you are looking for"
+                                                    aria-label="Type the service you are looking for"
+                                                    aria-describedby="basic-addon2"
+                                                />
+                                                <Button variant="secondary" id="button-addon2" style={{ width: '100px' }}>
+                                                    <FontAwesomeIcon icon={faSearch} /> &nbsp;
+                                                </Button>
+                                            </InputGroup>
 
                                         </div>
+                                    </Col>
+                                </Row>
+                            </div>
+                        </Container>
+                    </Container>
+                </section>
 
-
-                                    </div>
-                                    <div className='cnt'>
-                                        <h6><FontAwesomeIcon icon={faLocationDot} /> &nbsp;Bengaluru</h6>
-                                    </div>
+                <section id='dynamic_banner'>
+                    <Container>
+                        <Row>
+                            <Col lg={2}></Col>
+                            <Col lg={8}>
+                                <div className="con-bottom-inner">
+                                    <Slider {...banner_settings}>
+                                        <div className='padding_20'>
+                                            <h3>
+                                                <span style={{ color: '#111111', fontWeight: 700 }}>G</span>
+                                                <span style={{ color: '#6c757d', fontWeight: 800 }}>Serves</span>
+                                            </h3>
+                                            <h5 style={{ color: '#111111', fontWeight: 800 }}>SIMPLE | CONVENIENT | TRANSPARENT</h5>
+                                            <p><b>GServes</b> is an easy-to-use new age platform for availing the services provided by Government
+                                                department like Licenses, Certificates, Approvals, Registrations, etc., With <b>GServes</b>, enjoy
+                                                the convenience of doorsteps collection and delivery of documents, at absolutely trnasparent prices.
+                                            </p>
+                                        </div>
+                                        <div className='padding_20'>
+                                            <h3>
+                                                <span style={{ color: '#111111', fontWeight: 700 }}>G</span>
+                                                <span style={{ color: '#6c757d', fontWeight: 800 }}>Serves</span>
+                                            </h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                            <div className="four">
+                                                <span className="counter">2147</span>
+                                                <p>Happy Customers</p>
+                                            </div>
+                                        </div>
+                                        <div className='padding_20'>
+                                            <h3>
+                                                <span style={{ color: '#111111', fontWeight: 700 }}>G</span>
+                                                <span style={{ color: '#6c757d', fontWeight: 800 }}>Serves</span>
+                                            </h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                            <div className="four">
+                                                <span className="counter">3275</span>
+                                                <p>Registered Members</p>
+                                            </div>
+                                        </div>
+                                        <div className='padding_20'>
+                                            <h3>
+                                                <span style={{ color: '#111111', fontWeight: 700 }}>G</span>
+                                                <span style={{ color: '#6c757d', fontWeight: 800 }}>Serves</span>
+                                            </h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                            <div className="four">
+                                                <span className="counter">5849</span>
+                                                <p>Services Delivered</p>
+                                            </div>
+                                        </div>
+                                    </Slider>
                                 </div>
                             </Col>
-                            <Col lg={6}>
-                                <div className='logo_img'>
-                                    <img alt='logo' src='./assets/img/logo.png' />
-                                </div>
-                            </Col>
-                            <Col lg={3} className='margin_a'>
-                                <div className='header_left_m'>
-                                    <div className='cnt'>
-                                        <h6><FontAwesomeIcon icon={faEdit} /> &nbsp;Register</h6>
-                                    </div>
-                                    <div className='cnt'>
-                                        <h6><FontAwesomeIcon icon={faCircleUser} /> &nbsp;Login</h6>
-                                    </div>
-                                    <div className='cnt'>
-                                        <h6><FontAwesomeIcon icon={faCartShopping} /></h6>
-                                    </div>
-                                </div>
-                            </Col>
+                            <Col lg={2}></Col>
                         </Row>
                     </Container>
-                </div>
-                <div className='banner_cnt'>
-                    <h3>HOW CAN WE HELP YOU TODAY?</h3>
-                    <div className='banner_menu'>
-                        <Slider {...settings}>
-                            <div className='banner_menu_cnt'>
-                                <img src="./assets/img/menu_img.png" alt="menu" />
-                                <h3>Menu one</h3>
-                            </div>
-                            <div className='banner_menu_cnt'>
-                                <img src="./assets/img/menu_img.png" alt="menu" />
-                                <h3>Menu two</h3>
-                            </div>
-                            <div className='banner_menu_cnt'>
-                                <img src="./assets/img/menu_img.png" alt="menu" />
-                                <h3>Menu Three</h3>
-                            </div>
-                            <div className='banner_menu_cnt'>
-                                <img src="./assets/img/menu_img.png" alt="menu" />
-                                <h3>Menu four</h3>
-                            </div>
-                            <div className='banner_menu_cnt'>
-                                <img src="./assets/img/menu_img.png" alt="menu" />
-                                <h3>Menu five</h3>
-                            </div>
-                            <div className='banner_menu_cnt'>
-                                <img src="./assets/img/menu_img.png" alt="menu" />
-                                <h3>Menu six</h3>
-                            </div>
-                        </Slider>
-                    </div>
-                    <div className='search_suggestions'>
-                        <Form>
+                </section>
+
+                <section id='static_banner'>
+                    <Container>
+                        <Row>
+                            <Col className='text-center'>
+                                <h3 style={{ color: '#6c757d', fontWeight: 800 }}>How GServes Works</h3>
+                            </Col>
+                        </Row>
+                        <div style={{ padding: 30 }}>
                             <Row>
-                                <Col lg={9} className={'search_input'}>
-                                    <Form.Control type="text" placeholder="Type the service you are looking for" />
-                                </Col>
-                                <Col lg={3} className={'search_btn'}>
-                                    <Button variant="primary" type="submit">
-                                        <FontAwesomeIcon icon={faSearch} />
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Form>
-                    </div>
-                </div>
-            </section>
-
-            <section id='second_banner'>
-                <div className='dynamicbanner'>
-                    <Slider {...banner_settings}>
-                        <div className='dynamicbanner_cnt'>
-                            <h4>
-                                <span className='header'>Why G</span>
-                                <span className='subheader'>Serves</span>
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            </p>
-                            <h4>
-                                <span className='subheader'>3275</span>
-                            </h4>
-                            <p>
-                                Registered Members
-                            </p>
-                        </div>
-
-                        <div className='dynamicbanner_cnt'>
-                            <h4>
-                                <span className='header'>Why G</span>
-                                <span className='subheader'>Serves</span>
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            </p>
-                            <h4>
-                                <span className='subheader'>3275</span>
-                            </h4>
-                            <p>
-                                Registered Members
-                            </p>
-                        </div>
-                        <div className='dynamicbanner_cnt'>
-                            <h4>
-                                <span className='header'>Why G</span>
-                                <span className='subheader'>Serves</span>
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            </p>
-                            <h4>
-                                <span className='subheader'>3275</span>
-                            </h4>
-                            <p>
-                                Registered Members
-                            </p>
-                        </div>
-                        <div className='dynamicbanner_cnt'>
-                            <h4>
-                                <span className='header'>Why G</span>
-                                <span className='subheader'>Serves</span>
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            </p>
-                            <h4>
-                                <span className='subheader'>3275</span>
-                            </h4>
-                            <p>
-                                Registered Members
-                            </p>
-                        </div>
-                    </Slider>
-
-                </div>
-            </section>
-
-            <section id='static_banner' className='pd-20'>
-                <Container>
-                    <div className='static_banner_cnt'>
-                        <h3 className='static_banner_header'>How GServes Works</h3>
-                        <div className='static_banner_cnt'>
-                            <Row>
-                                <Col>
-                                    <div>
-                                        <img src="./assets/img/icons/1.png" />
-                                        <p className='gs_wk_cnt'>Choose the service</p>
+                                <Col lg={1}>
+                                    <div className='text-center' style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/1.png" alt='service' />
+                                        <h6 className='gs_wk_cnt'>Choose the service</h6>
                                     </div>
                                 </Col>
-                                <Col className='gs_wk_img'>
-                                    <div>
-                                        <img src="./assets/img/icons/2.png" />
+                                <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
+                                    <div style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
-                                <Col>
-                                    <div>
-                                        <img src="./assets/img/icons/3.png" />
-                                        <p className='gs_wk_cnt'>Choose the service</p>
+                                <Col lg={1}>
+                                    <div className='text-center' style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/3.png" alt='service' />
+                                        <h6 className='gs_wk_cnt'>Choose the service</h6>
                                     </div>
                                 </Col>
-                                <Col className='gs_wk_img'>
-                                    <div>
-                                        <img src="./assets/img/icons/2.png" />
+                                <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
+                                    <div style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
-                                <Col>
-                                    <div>
-                                        <img src="./assets/img/icons/4.png" />
-                                        <p className='gs_wk_cnt'>Print the completed Application in specified format</p>
+                                <Col lg={1}>
+                                    <div className='text-center' style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/4.png" alt='service' />
+                                        <h6 className='gs_wk_cnt'>Print the completed Application in specified format</h6>
                                     </div>
                                 </Col>
-                                <Col className='gs_wk_img'>
-                                    <div>
-                                        <img src="./assets/img/icons/2.png" />
+                                <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
+                                    <div style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
-                                <Col>
-                                    <div>
-                                        <img src="./assets/img/icons/5.png" />
-                                        <p className='gs_wk_cnt'>Hand over document to GServes</p>
+                                <Col lg={1}>
+                                    <div className='text-center' style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/5.png" alt='service' />
+                                        <h6 className='gs_wk_cnt'>Hand over document to GServes</h6>
                                     </div>
                                 </Col>
-                                <Col className='gs_wk_img'>
-                                    <div>
-                                        <img src="./assets/img/icons/2.png" />
+                                <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
+                                    <div style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
-                                <Col>
-                                    <div>
-                                        <img src="./assets/img/icons/6.png" />
-                                        <p className='gs_wk_cnt'>Documents verified & Submitted by GServes</p>
+                                <Col lg={1}>
+                                    <div className='text-center' style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/6.png" alt='service' />
+                                        <h6 className='gs_wk_cnt'>Documents verified & Submitted by GServes</h6>
                                     </div>
                                 </Col>
-                                <Col className='gs_wk_img'>
-                                    <div>
-                                        <img src="./assets/img/icons/2.png" />
+                                <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
+                                    <div style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
-                                <Col>
-                                    <div>
-                                        <img src="./assets/img/icons/7.png" />
-                                        <p className='gs_wk_cnt'>Application processed and service delivered</p>
+                                <Col lg={1}>
+                                    <div className='text-center' style={{ display: 'block', width: '100px' }}>
+                                        <img src="./assets/img/icons/7.png" alt='service' />
+                                        <h6 className='gs_wk_cnt'>Application processed and service delivered</h6>
                                     </div>
                                 </Col>
                             </Row>
                         </div>
-                    </div>
-                </Container>
-            </section>
 
-            <section id='testimonials'>
-                <div className='testimonials_cnt'>
-                    <h3 className='testimonials_cnt_header'>TESTIMONIALS</h3>
-                    <div className='testimonials_cnt_bdy' >
-                        <Slider {...banner_settings}>
-                            <div className='dynamicbanner_cnt'>
-                                <h1>
-                                    <FontAwesomeIcon icon={faCircleUser} />
-                                </h1>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                                </p>
-                                <p>
-                                    Someone famous in Source Title
-                                </p>
-                            </div>
-                            <div className='dynamicbanner_cnt'>
-                                <h1>
-                                    <FontAwesomeIcon icon={faCircleUser} />
-                                </h1>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                                </p>
-                                <p>
-                                    Someone famous in Source Title
-                                </p>
-                            </div>
-                        </Slider>
-                    </div>
-                </div>
+                    </Container>
+                </section>
 
-                <div className='contact_us_cnt pd-10'>
-                    <h3 className='testimonials_cnt_header'>GET IN TOUCH</h3>
+                <section id='testiminials' style={{ backgroundColor: '#eff8f7' }}>
+                    <Container>
+                        <Row style={{ paddingTop: 50, paddingBottom: 5 }}>
+                            <Col className='text-center'>
+                                <h3 style={{ color: '#6c757d', fontWeight: 800 }}>TESTIMONIALS</h3>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col lg={3}></Col>
+                            <Col lg={6} className='text-center'>
+                                <Slider {...banner_settings}>
+                                    <div className='testiminials_cnt'>
+                                        <h1>
+                                            <FontAwesomeIcon style={{ color: '#6c757d' }} icon={faCircleUser} />
+                                        </h1>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                        </p>
+                                        <br />
+                                        <footer style={{ fontSize: '14px' }} class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+                                        </footer>
+                                    </div>
+                                    <div className='testiminials_cnt'>
+                                        <h1>
+                                            <FontAwesomeIcon style={{ color: '#6c757d' }} icon={faCircleUser} />
+                                        </h1>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                        </p>
+                                        <br />
+                                        <footer style={{ fontSize: '14px' }} class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+                                        </footer>
+                                    </div>
+                                </Slider>
+                            </Col>
+                            <Col lg={3}></Col>
+                        </Row>
+                    </Container>
+                </section>
 
-                    <div className='form_cnt'>
-                        <Form>
-                            <Row>
-                                <Col lg={4} >
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Text id="basic-addon1">
-                                            <FontAwesomeIcon icon={faUser} />
-                                        </InputGroup.Text>
-                                        <FormControl
-                                            placeholder="Name"
-                                            aria-label="Name"
-                                            aria-describedby="basic-addon1"
-                                        />
-                                    </InputGroup>
-                                </Col>
-                                <Col lg={4} >
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Text id="basic-addon1">
-                                            <FontAwesomeIcon icon={faMobile} />
-                                        </InputGroup.Text>
-                                        <FormControl
-                                            placeholder="Mobile"
-                                            aria-label="Mobile"
-                                            aria-describedby="basic-addon1"
-                                        />
-                                    </InputGroup>
-                                </Col>
-                                <Col lg={4} >
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Text id="basic-addon1">
-                                            <FontAwesomeIcon icon={faEnvelope} />
-                                        </InputGroup.Text>
-                                        <FormControl
-                                            placeholder="Email"
-                                            aria-label="Email"
-                                            aria-describedby="basic-addon1"
-                                        />
-                                    </InputGroup>
-                                </Col>
-                            </Row>
+                <section id='getintouch' style={{ backgroundColor: '#f2ffff', paddingTop: 50, paddingBottom: 50 }}>
+                    <Container>
+                        <Row>
+                            <Col className='text-center'>
+                                <h3 style={{ color: '#6c757d', fontWeight: 800 }}>GET IN TOUCH</h3>
+                            </Col>
+                        </Row>
 
-                            <Row>
-                                <Col lg={8} >
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Text id="basic-addon1">
-                                            <FontAwesomeIcon icon={faComment} />
-                                        </InputGroup.Text>
-                                        <FormControl
-                                            placeholder="Message"
-                                            aria-label="Message"
-                                            aria-describedby="basic-addon1"
-                                        />
-                                    </InputGroup>
-                                </Col>
-                                <Col lg={4} >
-                                    <Button className='sub_btn' variant="secondary" type="submit">
-                                        <FontAwesomeIcon icon={faPaperPlane} /> Submit
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Form>
-                    </div>
-                </div>
-            </section>
+                        <div className='form_cnt' style={{ paddingTop: 20 }}>
+                            <Form>
+                                <Row>
+                                    <Col lg={4} >
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Text id="basic-addon1">
+                                                <FontAwesomeIcon icon={faUser} />
+                                            </InputGroup.Text>
+                                            <FormControl
+                                                placeholder="Name"
+                                                aria-label="Name"
+                                                aria-describedby="basic-addon1"
+                                            />
+                                        </InputGroup>
+                                    </Col>
+                                    <Col lg={4} >
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Text id="basic-addon1">
+                                                <FontAwesomeIcon icon={faMobile} />
+                                            </InputGroup.Text>
+                                            <FormControl
+                                                placeholder="Mobile"
+                                                aria-label="Mobile"
+                                                aria-describedby="basic-addon1"
+                                            />
+                                        </InputGroup>
+                                    </Col>
+                                    <Col lg={4} >
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Text id="basic-addon1">
+                                                <FontAwesomeIcon icon={faEnvelope} />
+                                            </InputGroup.Text>
+                                            <FormControl
+                                                placeholder="Email"
+                                                aria-label="Email"
+                                                aria-describedby="basic-addon1"
+                                            />
+                                        </InputGroup>
+                                    </Col>
+                                </Row>
 
-            <section id="footer">
-                <div className='footer_cnt'>
-                    <Row>
-                        <Col lg={7}>
-                            <div className='footer_left_cnt'>
-                                <img src='./assets/img/logo.png' alt='logo' />
-                            </div>
-                        </Col>
-                        <Col lg={4}>
-                            <div className='footer_right_cnt'>
-                                <p>Contact us / Legal Info / Copy Righ / All other usual stuff</p>
-                                <p>© Copyright 2022, All Right Reserved</p>
-                            </div>
-                        </Col>
-                    </Row>
-                </div>
-            </section>
+                                <Row>
+                                    <Col lg={8} >
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Text id="basic-addon1">
+                                                <FontAwesomeIcon icon={faComment} />
+                                            </InputGroup.Text>
+                                            <FormControl
+                                                placeholder="Message"
+                                                aria-label="Message"
+                                                aria-describedby="basic-addon1"
+                                            />
+                                        </InputGroup>
+                                    </Col>
+                                    <Col lg={4} >
+                                        <Button className='sub_btn btn-block' variant="secondary" type="submit">
+                                            <FontAwesomeIcon icon={faPaperPlane} /> Send
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Form>
+                        </div>
+                    </Container>
+                </section>
 
-            <div className='modal_cnt'>
-                <Modal
-                    {...props}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title-vcenter">
-                            Modal heading
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <h4>Centered Modal</h4>
-                        <p>
-                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                            consectetur ac, vestibulum at eros.
-                        </p>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={props.onHide}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
-            </div>
-
-
+                <FooterComp />
+            </main>
         </>
     );
 }
