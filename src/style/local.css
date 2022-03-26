@@ -50,6 +50,7 @@ p {
 
 .social a {
   color: #343a40cf !important;
+  text-decoration: none;
 }
 
 .bg-semi-dark {
@@ -292,6 +293,7 @@ button.close {
 
 td {
   font-family: 'Open Sans', sans-serif;
+  border-bottom: 1px solid #ccc;
 }
 
 /* Multi step */
@@ -622,7 +624,68 @@ select.list-dt:focus {
   color: #00000091;
 }
 
-.sub_btn{
+.sub_btn {
   display: block;
   width: 100%;
+}
+
+.banner_mega_menu {
+  position: absolute;
+  z-index: 4;
+  background: white;
+  padding: 5px;
+  width: 38%;
+  height: 200px;
+  border-radius: 12px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.b_block {
+  display: block;
+}
+
+.b_none {
+  display: none;
+}
+
+.megamenu_cnt {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.megamenu_cnt a {
+  color: #09988e;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.banner_mega_menu_header {
+  padding: 10px;
+}
+
+.banner_mega_menu_content {
+  padding: 0px 15px 10px 15px;
+}
+
+.modal_cnt {
+  padding: 10px;
+}
+
+.react-responsive-modal-modal{
+  border-radius: 8px;
+  width: 30%;
+}
+
+.proceduremodal{
+  border-radius: 8px;
+  width: 50%;
+}
+
+#table-scroll {
+  height: 300px;
+  overflow: auto;
+  margin-top: 20px;
 }

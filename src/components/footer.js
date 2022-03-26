@@ -18,7 +18,6 @@ function FooterComp(props) {
                         </Col>
                     </Row>
                 </Container>
-
             </section>
         </>
     );

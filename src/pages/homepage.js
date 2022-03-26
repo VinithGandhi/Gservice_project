@@ -7,17 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faUser, faMobile, faSearch, faEnvelope, faComment, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import HeaderComp from '../components/header';
 import FooterComp from '../components/footer';
+import BannerMenuComp from '../components/bannermenu';
 
 
 function HomePage(props) {
-    var settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 5,
-        arrows: true
-    };
+
     var banner_settings = {
         dots: false,
         infinite: true,
@@ -46,58 +40,7 @@ function HomePage(props) {
                                 </Row>
                                 <Row>
                                     <Col className='pdb-10'>
-                                        <div className='banner_menu'>
-                                            <Slider {...settings}>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu one</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu two</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu Three</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu four</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu five</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu six</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu seven</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu eight</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu nine</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu ten</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu eleven</p>
-                                                </div>
-                                                <div className='banner_menu_cnt'>
-                                                    <img src="./assets/img/menu_img.png" alt="menu" />
-                                                    <p>Menu twelve</p>
-                                                </div>
-                                            </Slider>
-                                        </div>
+                                        <BannerMenuComp />
                                     </Col>
                                 </Row>
                                 <Row>
@@ -276,7 +219,7 @@ function HomePage(props) {
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
                                         </p>
                                         <br />
-                                        <footer style={{ fontSize: '14px' }} class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+                                        <footer style={{ fontSize: '14px' }} className="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
                                         </footer>
                                     </div>
                                     <div className='testiminials_cnt'>
@@ -287,7 +230,7 @@ function HomePage(props) {
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
                                         </p>
                                         <br />
-                                        <footer style={{ fontSize: '14px' }} class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+                                        <footer style={{ fontSize: '14px' }} className="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
                                         </footer>
                                     </div>
                                 </Slider>
