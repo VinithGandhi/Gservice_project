@@ -1,12 +1,154 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faChevronRight, faMobile } from '@fortawesome/free-solid-svg-icons';
 import HeaderComp from '../components/header';
 import FooterComp from '../components/footer';
-
+import { axiosInstance } from '../Services';
+import { useNavigate } from "react-router-dom";
 
 
 function LoginPage(props) {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (localStorage.getItem('logging_status') === true || localStorage.getItem('logging_status') === 'true') {
+            navigate("/");
+        }
+    }, []);
+
+
+    const [form_datas, setFomdatas] = useState({
+        username: '',
+        password: '',
+    });
+
+    const [error_msgs, seterror_msgs] = useState({
+        show_success_msg: false,
+        success_msg: '',
+        show_error_msg: false,
+        error_msg: '',
+    });
+
+    const [form_errormsg, setformerrormsg] = useState({
+        username_errormsg: "",
+        password_errormsg: "",
+    });
+
+    function handleInputChange(event) {
+        if (event.target.name === "username") {
+            setFomdatas({
+                ...form_datas,
+                username: event.target.value
+            });
+        }
+        if (event.target.name === "password") {
+            setFomdatas({
+                ...form_datas,
+                password: event.target.value,
+            });
+        }
+    }
+
+    function formvalidation() {
+
+        let username_errormsg = '';
+        let password_errormsg = '';
+
+        if (!form_datas.username) {
+            username_errormsg = "Mobile number cannot be blank";
+        }
+        else if (form_datas.username.length !== 10) {
+            username_errormsg = "Enter Valid mobile number";
+        }
+
+        if (!form_datas.password) {
+            password_errormsg = "Password cannot be blank";
+        }
+
+        if (username_errormsg || password_errormsg) {
+            setformerrormsg({
+                username_errormsg: username_errormsg,
+                password_errormsg: password_errormsg,
+            });
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+
+    function handleregister() {
+        const validated = formvalidation();
+        if (validated) {
+            setformerrormsg({
+                username_errormsg: "",
+                password_errormsg: "",
+            });
+            const JSONvalue = form_datas;
+            axiosInstance.post('checkLoginDetails', JSONvalue)
+                .then((res) => {
+                    if (res.data.status === 'success') {
+                        localStorage.setItem('authTokens', JSON.stringify(res.data.data["authToken"]));
+                        localStorage.setItem('logging_status', true);
+                        localStorage.setItem('username', res.data.data["username"]);
+                        // getItem('repositories');
+                        seterror_msgs({
+                            show_success_msg: true,
+                            success_msg: res.data.msg,
+                            show_error_msg: false,
+                            error_msg: ''
+                        });
+                        setFomdatas({
+                            username: '',
+                            password: '',
+                        });
+                        setTimeout(() => {
+                            cleardatas();
+                        }, 5000);
+                        navigate("/");
+                    }
+                    else if (res.data.status === 'failed') {
+                        seterror_msgs({
+                            show_success_msg: false,
+                            success_msg: '',
+                            show_error_msg: true,
+                            error_msg: res.data.msg
+                        });
+                        setTimeout(() => {
+                            cleardatas();
+                        }, 5000);
+                    }
+                })
+                .catch(() => {
+                    seterror_msgs({
+                        ...error_msgs,
+                        show_error_msg: true,
+                        error_msg: 'Something went wrong please try again'
+                    });
+                    setTimeout(() => {
+                        cleardatas();
+                    }, 5000);
+                });
+        }
+    }
+
+    function cleardatas() {
+        seterror_msgs({
+            show_success_msg: false,
+            success_msg: '',
+            show_error_msg: false,
+            error_msg: '',
+        });
+    }
+
+
+    function navigatetohone() {
+        navigate("/");
+    }
+
+
     return (
         <>
             <HeaderComp />
@@ -40,21 +182,30 @@ function LoginPage(props) {
                         <div style={{ padding: 2 }}>
                             <div className="row">
                                 <div className="col-md-4 offset-md-4">
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faUser} /></span>
+                                    <div className="form-group mb-3">
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text" id="" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faMobile} /></span>
+                                            </div>
+                                            <input type="text" className="form-control" placeholder="+91" disabled />
+                                            <input type="text" className="form-control" data-inputmask="'mask': '99999 99999'" placeholder="Mobile number" style={{ width: '60%' }} name="username" value={form_datas.username} onChange={handleInputChange} maxLength={10} />
                                         </div>
-                                        <input type="text" className="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1" />
+                                        {form_errormsg.username_errormsg !== '' ?
+                                            <span className='error_msg'>{form_errormsg.username_errormsg}</span> : <></>}
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-4 offset-md-4">
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faLock} /></span>
+                                    <div className="form-group mb-3">
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faLock} /></span>
+                                            </div>
+                                            <input type="password" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" name='password' value={form_datas.password} onChange={handleInputChange} />
                                         </div>
-                                        <input type="password" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" />
+                                        {form_errormsg.password_errormsg !== '' ?
+                                            <span className='error_msg'>{form_errormsg.password_errormsg}</span> : <></>}
                                     </div>
                                 </div>
                             </div>
@@ -62,14 +213,14 @@ function LoginPage(props) {
                                 <div className="col-md-4 offset-md-4">
                                     <div className="row">
                                         <div className="col-6">
-                                            <button type="button" className="btn btn-secondary btn-block w-100" >
+                                            <button onClick={navigatetohone} type="button" className="btn btn-secondary btn-block w-100" >
                                                 Cancel
                                             </button>
                                         </div>
                                         <div className="col-6">
-                                            <a href="homeSignIn.html" type="button" className="btn btn-secondary btn-block w-100" >
+                                            <p className="btn btn-secondary btn-block w-100" onClick={handleregister} >
                                                 <span style={{ padding: 10 }}> <FontAwesomeIcon icon={faChevronRight} /> </span> Login
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                     <div className="row" style={{ paddingTop: 10 }}>
@@ -77,7 +228,7 @@ function LoginPage(props) {
                                             <a href="#password">Forget Password</a>
                                         </div>
                                         <div className="col-6 social">
-                                            <a href="#register">Register</a>
+                                            <a href="/register">Register</a>
                                         </div>
                                     </div>
                                 </div>
@@ -87,6 +238,24 @@ function LoginPage(props) {
                     </div>
                 </section>
 
+                {
+                    error_msgs.show_success_msg === true ?
+                        <>
+                            <div className="container success_msg_bx">
+                                <h4>{error_msgs.success_msg}</h4>
+                            </div>
+                        </> :
+                        null
+                }
+                {
+                    error_msgs.show_error_msg === true ?
+                        <>
+                            <div className="container error_msg_bx">
+                                <h4>{error_msgs.error_msg}</h4>
+                            </div>
+                        </> :
+                        null
+                }
 
                 <section>
                     <div className="container" style={{ paddingTop: 20, paddingBottom: 60 }}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,9 +8,25 @@ import { faCircleUser, faUser, faMobile, faSearch, faEnvelope, faComment, faPape
 import HeaderComp from '../components/header';
 import FooterComp from '../components/footer';
 import BannerMenuComp from '../components/bannermenu';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 
 function HomePage(props) {
+
+    const [loggingstatus, setloggingstatus] = useState(false);
+    useEffect(() => {
+        if (localStorage.getItem('logging_status') !== null && localStorage.getItem('logging_status') !== undefined) {
+            setloggingstatus(localStorage.getItem('logging_status'));
+        } else {
+            setloggingstatus(false);
+        }
+    }, []);
+
+    const [modalopen, setmodalopen] = useState(false);
+    const openmodal = () => setmodalopen(true);
+    const closemodal = () => setmodalopen(false);
+
 
     var banner_settings = {
         dots: false,
@@ -237,6 +253,18 @@ function HomePage(props) {
                             </Col>
                             <Col lg={3}></Col>
                         </Row>
+
+                        {loggingstatus === true || loggingstatus === 'true' ?
+                            <Row style={{ paddingTop: 5, paddingBottom: 20 }}>
+                                <Col className='text-center'>
+                                    <button onClick={openmodal} type="button" className="btn btn-secondary">
+                                        Submit Testomonial
+                                    </button>
+                                </Col>
+                            </Row>
+                            : null}
+
+
                     </Container>
                 </section>
 
@@ -315,6 +343,54 @@ function HomePage(props) {
 
                 <FooterComp />
             </main>
+
+
+            <Modal open={modalopen} onClose={closemodal} center>
+                <div className='modal_cnt'>
+                    <section>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-2"></div>
+                                <div className="col-8">
+                                    <div className="con-bottom-inner">
+                                        <h6><span style={{ color: '#6c757d', fontWeight: 800 }}>Submit Testimonial</span></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-2"></div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="input-group mb-3">
+                                        <textarea
+                                            className="form-control"
+                                            id="exampleFormControlTextarea1"
+                                            rows="5"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                </div>
+                                <div className="col-3">
+                                    <button onClick={closemodal} type="button" class="btn btn-danger w-100" data-dismiss="modal">Close</button>
+                                </div>
+                                <div className="col-3">
+                                    <button type="button" class="btn btn-secondary w-100">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+            </Modal>
+
         </>
     );
 }

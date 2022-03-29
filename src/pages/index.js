@@ -19,8 +19,5 @@ const Pages = () => {
                 <Route exact path="/service" element={<ServicesPage />} />
             </Routes>
         </Router>
-
-
-
     );
 }; export default Pages;

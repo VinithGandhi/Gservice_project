@@ -634,10 +634,14 @@ select.list-dt:focus {
   z-index: 4;
   background: white;
   padding: 5px;
-  width: 38%;
-  height: 200px;
+  width: 50%;
+  left: 380px;
+  height: 250px;
   border-radius: 12px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) 0px 0px 0px 0px;
+
 }
 
 .b_block {
@@ -649,8 +653,7 @@ select.list-dt:focus {
 }
 
 .megamenu_cnt {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-bottom: 1px solid #ccc;
   padding: 5px;
   cursor: pointer;
 }
@@ -674,12 +677,12 @@ select.list-dt:focus {
   padding: 10px;
 }
 
-.react-responsive-modal-modal{
+.react-responsive-modal-modal {
   border-radius: 8px;
   width: 30%;
 }
 
-.proceduremodal{
+.proceduremodal {
   border-radius: 8px;
   width: 50%;
 }
@@ -688,4 +691,38 @@ select.list-dt:focus {
   height: 300px;
   overflow: auto;
   margin-top: 20px;
+}
+
+.error_msg {
+  color: red;
+  font-size: 12px;
+}
+
+.success_msg_bx {
+  text-align: center;
+  background-color: #5cb85cab;
+  padding: 5px;
+  width: 33%;
+  cursor: pointer;
+}
+.error_msg_bx {
+  text-align: center;
+  background-color: #c9302cb0;
+  padding: 5px;
+  width: 33%;
+  cursor: pointer;
+}
+
+.success_msg_bx h4 {
+  font-size: 1.1rem;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+.error_msg_bx h4 {
+  font-size: 1.1rem;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  color: #fff;
 }
