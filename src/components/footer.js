@@ -8,7 +8,7 @@ function FooterComp(props) {
                 <Container>
                     <Row>
                         <Col lg={7}>
-                            <img src="./assets/img/logo.png" alt={'logo'} />
+                            <img src="../assets/img/logo.png" alt={'logo'} />
                         </Col>
                         <Col lg={5}>
                             <div style={{ color: '#fff' }}>

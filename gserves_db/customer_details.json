@@ -1,8 +1,8 @@
 [{
   "_id": {
-    "$oid": "62419d19593c0000fa00070b"
+    "$oid": "62488f5869042faf6e0f42c6"
   },
-  "user_unique_id": "164846722500",
+  "user_unique_id": "164892245600",
   "first_name": "vinith",
   "last_name": "Gandhi",
   "email_id": "vinith@gmail.com",
@@ -10,5 +10,7 @@
   "mobile_prefix": "+91",
   "password": "c777774f69e5c93cb11abaafeb864be5",
   "email_status": 0,
-  "mobile_status": 0
+  "mobile_status": 0,
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56"
 }]

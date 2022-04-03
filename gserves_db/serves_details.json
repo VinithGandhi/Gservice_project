@@ -1,0 +1,95 @@
+[{
+  "_id": {
+    "$oid": "62494b17cbdc8f4508426ba8"
+  },
+  "serves_name": "Serves One",
+  "serves_details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor dui gravida, ultrices massa id, sagittis felis. Donec posuere nulla sed risus vestibulum malesuada. In vestibulum diam ut dui tempus, vel congue dui fermentum.",
+  "output": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod orci a ullamcorper pharetra.",
+  "charges": 0,
+  "time_taken": "15 days",
+  "addon_status": "yes",
+  "addon_lis": [
+    {
+      "addon_name": "addon one"
+    },
+    {
+      "addon_name": "addon two"
+    },
+    {
+      "addon_name": "addon three"
+    },
+    {
+      "addon_name": "addon four"
+    },
+    {
+      "addon_name": "addon five"
+    }
+  ],
+  "procedures": [
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    }
+  ],
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56"
+},{
+  "_id": {
+    "$oid": "62494b17cbdc8f4508426ba9"
+  },
+  "serves_name": "Serves Two",
+  "serves_details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor dui gravida, ultrices massa id, sagittis felis. Donec posuere nulla sed risus vestibulum malesuada. In vestibulum diam ut dui tempus, vel congue dui fermentum.",
+  "output": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod orci a ullamcorper pharetra.",
+  "charges": 0,
+  "time_taken": "15 days",
+  "addon_status": "no",
+  "addon_lis": [],
+  "procedures": [
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      "procedures_dtl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    }
+  ],
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56"
+}]

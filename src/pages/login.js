@@ -5,6 +5,7 @@ import HeaderComp from '../components/header';
 import FooterComp from '../components/footer';
 import { axiosInstance } from '../Services';
 import { useNavigate } from "react-router-dom";
+import { Base64 } from 'js-base64';
 
 
 function LoginPage(props) {
@@ -87,13 +88,13 @@ function LoginPage(props) {
                 password_errormsg: "",
             });
             const JSONvalue = form_datas;
-            axiosInstance.post('checkLoginDetails', JSONvalue)
+            axiosInstance.post('/Login', JSONvalue)
                 .then((res) => {
                     if (res.data.status === 'success') {
                         localStorage.setItem('authTokens', JSON.stringify(res.data.data["authToken"]));
                         localStorage.setItem('logging_status', true);
-                        localStorage.setItem('username', res.data.data["username"]);
-                        // getItem('repositories');
+                        localStorage.setItem('gsun', Base64.encode(res.data.data["username"], true));
+                        localStorage.setItem('gsud', Base64.encode(res.data.data["userid"], true));
                         seterror_msgs({
                             show_success_msg: true,
                             success_msg: res.data.msg,

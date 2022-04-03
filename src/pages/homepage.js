@@ -10,23 +10,233 @@ import FooterComp from '../components/footer';
 import BannerMenuComp from '../components/bannermenu';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import { Base64 } from 'js-base64';
+import { axiosInstance } from '../Services';
+import SearchComp from '../components/search';
 
 
 function HomePage(props) {
 
     const [loggingstatus, setloggingstatus] = useState(false);
+    const [edittestimonials, setedittestimonials] = useState(false);
+    const [loggedusername, setloggedusername] = useState('');
+    const [testimonials, settestimonials] = useState([]);
     useEffect(() => {
         if (localStorage.getItem('logging_status') !== null && localStorage.getItem('logging_status') !== undefined) {
             setloggingstatus(localStorage.getItem('logging_status'));
+            setloggedusername(Base64.decode(localStorage.getItem('gsun')));
         } else {
             setloggingstatus(false);
         }
+        gettestimonials();
     }, []);
 
-    const [modalopen, setmodalopen] = useState(false);
-    const openmodal = () => setmodalopen(true);
-    const closemodal = () => setmodalopen(false);
+    function gettestimonials() {
+        axiosInstance.get('/Testimonials')
+            .then((res) => {
+                settestimonials(res.data.data);
+                let datsss = res.data.data;
+                if (localStorage.getItem('logging_status') !== null && localStorage.getItem('logging_status') !== undefined) {
+                    let country = datsss.find(el => el.user_id === Base64.decode(localStorage.getItem('gsud')));
+                    if (country !== undefined) {
+                        setedittestimonials(true);
+                        setFomdatas({
+                            ...form_datas,
+                            testimonial_msg: country["message"],
+                            username: country["user_name"],
+                            userid: country["user_id"],
+                        });
+                    }
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
+    const [modalopen, setmodalopen] = useState(false);
+    const openmodal = () => {
+        setmodalopen(true);
+        setFomdatas({
+            ...form_datas,
+            username: loggedusername,
+            userid: Base64.decode(localStorage.getItem('gsud'))
+        });
+    }
+    const closemodal = () => {
+        setmodalopen(false)
+        setFomdatas({
+            username: '',
+            userid: '',
+            testimonial_msg: '',
+        });
+    };
+
+    const [form_datas, setFomdatas] = useState({
+        username: '',
+        userid: '',
+        testimonial_msg: '',
+    });
+
+    const [error_msgs, seterror_msgs] = useState({
+        show_success_msg: false,
+        success_msg: '',
+        show_error_msg: false,
+        error_msg: '',
+    });
+
+    const [form_errormsg, setformerrormsg] = useState({
+        username_errormsg: "",
+        testimonial_msg_errormsg: "",
+    });
+
+    function handleInputChange(event) {
+        if (event.target.name === "testimonial_msg") {
+            setFomdatas({
+                ...form_datas,
+                testimonial_msg: event.target.value
+            });
+        }
+    }
+
+
+    function formvalidation() {
+
+        let username_errormsg = '';
+        let testimonial_msg_errormsg = '';
+
+        if (!form_datas.username) {
+            username_errormsg = "User name cannot be blank";
+        }
+
+        if (!form_datas.testimonial_msg) {
+            testimonial_msg_errormsg = "Message cannot be blank";
+        }
+
+        if (username_errormsg || testimonial_msg_errormsg) {
+            setformerrormsg({
+                username_errormsg: username_errormsg,
+                testimonial_msg_errormsg: testimonial_msg_errormsg,
+            });
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    function handletestimonialsubmit() {
+        const validated = formvalidation();
+        if (validated) {
+            setformerrormsg({
+                username_errormsg: "",
+                password_errormsg: "",
+            });
+            const JSONvalue = form_datas;
+            axiosInstance.post('/Testimonials/insert', JSONvalue)
+                .then((res) => {
+                    if (res.data.status === 'success') {
+                        seterror_msgs({
+                            show_success_msg: true,
+                            success_msg: res.data.msg,
+                            show_error_msg: false,
+                            error_msg: ''
+                        });
+                        setFomdatas({
+                            username: '',
+                            userid: '',
+                            testimonial_msg: '',
+                        });
+                        setTimeout(() => {
+                            closemodal();
+                            cleardatas();
+                            gettestimonials();
+                        }, 3000);
+                    }
+                    else {
+                        seterror_msgs({
+                            ...error_msgs,
+                            show_error_msg: true,
+                            error_msg: 'Something went wrong please try again'
+                        });
+                        setTimeout(() => {
+                            cleardatas();
+                        }, 3000);
+                    }
+                })
+                .catch((err) => {
+                    seterror_msgs({
+                        ...error_msgs,
+                        show_error_msg: true,
+                        error_msg: 'Something went wrong please try again'
+                    });
+                    setTimeout(() => {
+                        cleardatas();
+                    }, 3000);
+                });
+        }
+    }
+
+    function handletestimonialedit() {
+        const validated = formvalidation();
+        if (validated) {
+            setformerrormsg({
+                username_errormsg: "",
+                password_errormsg: "",
+            });
+            const JSONvalue = form_datas;
+            axiosInstance.post('/Testimonials/edit', JSONvalue)
+                .then((res) => {
+                    if (res.data.status === 'success') {
+                        seterror_msgs({
+                            show_success_msg: true,
+                            success_msg: res.data.msg,
+                            show_error_msg: false,
+                            error_msg: ''
+                        });
+                        setFomdatas({
+                            username: '',
+                            userid: '',
+                            testimonial_msg: '',
+                        });
+                        setTimeout(() => {
+                            closemodal();
+                            cleardatas();
+                            gettestimonials();
+                        }, 3000);
+                    }
+                    else {
+                        seterror_msgs({
+                            ...error_msgs,
+                            show_error_msg: true,
+                            error_msg: 'Something went wrong please try again'
+                        });
+                        setTimeout(() => {
+                            cleardatas();
+                        }, 3000);
+                    }
+                })
+                .catch((err) => {
+                    seterror_msgs({
+                        ...error_msgs,
+                        show_error_msg: true,
+                        error_msg: 'Something went wrong please try again'
+                    });
+                    setTimeout(() => {
+                        cleardatas();
+                    }, 3000);
+                });
+        }
+    }
+
+    function cleardatas() {
+        seterror_msgs({
+            show_success_msg: false,
+            success_msg: '',
+            show_error_msg: false,
+            error_msg: '',
+        });
+    }
 
     var banner_settings = {
         dots: false,
@@ -61,19 +271,7 @@ function HomePage(props) {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <div className='search_suggestions'>
-                                            <InputGroup className="mb-3">
-                                                <FormControl
-                                                    placeholder="Type the service you are looking for"
-                                                    aria-label="Type the service you are looking for"
-                                                    aria-describedby="basic-addon2"
-                                                />
-                                                <Button variant="secondary" id="button-addon2" style={{ width: '100px' }}>
-                                                    <FontAwesomeIcon icon={faSearch} /> &nbsp;
-                                                </Button>
-                                            </InputGroup>
-
-                                        </div>
+                                        <SearchComp />
                                     </Col>
                                 </Row>
                             </div>
@@ -151,62 +349,62 @@ function HomePage(props) {
                             <Row>
                                 <Col lg={1}>
                                     <div className='text-center' style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/1.png" alt='service' />
+                                        <img src="../assets/img/icons/1.png" alt='service' />
                                         <h6 className='gs_wk_cnt'>Choose the service</h6>
                                     </div>
                                 </Col>
                                 <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
                                     <div style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
+                                        <img src="../assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
                                 <Col lg={1}>
                                     <div className='text-center' style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/3.png" alt='service' />
+                                        <img src="../assets/img/icons/3.png" alt='service' />
                                         <h6 className='gs_wk_cnt'>Choose the service</h6>
                                     </div>
                                 </Col>
                                 <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
                                     <div style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
+                                        <img src="../assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
                                 <Col lg={1}>
                                     <div className='text-center' style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/4.png" alt='service' />
+                                        <img src="../assets/img/icons/4.png" alt='service' />
                                         <h6 className='gs_wk_cnt'>Print the completed Application in specified format</h6>
                                     </div>
                                 </Col>
                                 <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
                                     <div style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
+                                        <img src="../assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
                                 <Col lg={1}>
                                     <div className='text-center' style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/5.png" alt='service' />
+                                        <img src="../assets/img/icons/5.png" alt='service' />
                                         <h6 className='gs_wk_cnt'>Hand over document to GServes</h6>
                                     </div>
                                 </Col>
                                 <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
                                     <div style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
+                                        <img src="../assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
                                 <Col lg={1}>
                                     <div className='text-center' style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/6.png" alt='service' />
+                                        <img src="../assets/img/icons/6.png" alt='service' />
                                         <h6 className='gs_wk_cnt'>Documents verified & Submitted by GServes</h6>
                                     </div>
                                 </Col>
                                 <Col lg={1} className='gs_wk_img text-center' style={{ marginTop: '30px' }}>
                                     <div style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
+                                        <img src="../assets/img/icons/2.png" style={{ width: '60px' }} alt='service' />
                                     </div>
                                 </Col>
                                 <Col lg={1}>
                                     <div className='text-center' style={{ display: 'block', width: '100px' }}>
-                                        <img src="./assets/img/icons/7.png" alt='service' />
+                                        <img src="../assets/img/icons/7.png" alt='service' />
                                         <h6 className='gs_wk_cnt'>Application processed and service delivered</h6>
                                     </div>
                                 </Col>
@@ -227,44 +425,47 @@ function HomePage(props) {
                             <Col lg={3}></Col>
                             <Col lg={6} className='text-center'>
                                 <Slider {...banner_settings}>
-                                    <div className='testiminials_cnt'>
-                                        <h1>
-                                            <FontAwesomeIcon style={{ color: '#6c757d' }} icon={faCircleUser} />
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                                        </p>
-                                        <br />
-                                        <footer style={{ fontSize: '14px' }} className="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
-                                        </footer>
-                                    </div>
-                                    <div className='testiminials_cnt'>
-                                        <h1>
-                                            <FontAwesomeIcon style={{ color: '#6c757d' }} icon={faCircleUser} />
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                                        </p>
-                                        <br />
-                                        <footer style={{ fontSize: '14px' }} className="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
-                                        </footer>
-                                    </div>
+
+                                    {testimonials.map((value, index) => {
+                                        return (
+                                            <div key={index} className='testiminials_cnt'>
+                                                <h1>
+                                                    <FontAwesomeIcon style={{ color: '#6c757d' }} icon={faCircleUser} />
+                                                </h1>
+                                                <p>
+                                                    {value.message}
+                                                </p>
+                                                <br />
+                                                <footer style={{ fontSize: '14px' }} className="blockquote-footer"><cite title="Source Title">{value.user_name}</cite>
+                                                </footer>
+                                            </div>
+                                        );
+                                    })}
                                 </Slider>
                             </Col>
                             <Col lg={3}></Col>
                         </Row>
 
                         {loggingstatus === true || loggingstatus === 'true' ?
-                            <Row style={{ paddingTop: 5, paddingBottom: 20 }}>
-                                <Col className='text-center'>
-                                    <button onClick={openmodal} type="button" className="btn btn-secondary">
-                                        Submit Testomonial
-                                    </button>
-                                </Col>
-                            </Row>
+                            <>
+                                {edittestimonials === true ?
+                                    <Row style={{ paddingTop: 5, paddingBottom: 20 }}>
+                                        <Col className='text-center'>
+                                            <button onClick={openmodal} type="button" className="btn btn-secondary">
+                                                Edit Testomonial
+                                            </button>
+                                        </Col>
+                                    </Row>
+                                    :
+                                    <Row style={{ paddingTop: 5, paddingBottom: 20 }}>
+                                        <Col className='text-center'>
+                                            <button onClick={openmodal} type="button" className="btn btn-secondary">
+                                                Submit Testomonial
+                                            </button>
+                                        </Col>
+                                    </Row>}
+                            </>
                             : null}
-
-
                     </Container>
                 </section>
 
@@ -365,29 +566,56 @@ function HomePage(props) {
                         <div className="container">
                             <div className="row">
                                 <div className="col-12">
-                                    <div className="input-group mb-3">
-                                        <textarea
-                                            className="form-control"
-                                            id="exampleFormControlTextarea1"
-                                            rows="5"
-                                        />
-                                    </div>
+                                    <Form>
+                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                            <Form.Label>User Name</Form.Label>
+                                            <Form.Control type="text" placeholder="" name={'username'} value={loggedusername} disabled />
+
+                                            {form_errormsg.username_errormsg !== '' ?
+                                                <span className='error_msg'>{form_errormsg.username_errormsg}</span> : <></>}
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                            <Form.Label>Message</Form.Label>
+                                            <Form.Control as="textarea" rows={3} name={'testimonial_msg'} value={form_datas.testimonial_msg} onChange={handleInputChange} />
+
+                                            {form_errormsg.testimonial_msg_errormsg !== '' ?
+                                                <span className='error_msg'>{form_errormsg.testimonial_msg_errormsg}</span> : <></>}
+                                        </Form.Group>
+                                    </Form>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-6">
+                                <div className="col-8">
                                 </div>
-                                <div className="col-3">
-                                    <button onClick={closemodal} type="button" class="btn btn-danger w-100" data-dismiss="modal">Close</button>
-                                </div>
-                                <div className="col-3">
-                                    <button type="button" class="btn btn-secondary w-100">Submit</button>
+                                <div className="col-4">
+                                    {edittestimonials === true ?
+                                        <button onClick={handletestimonialedit} type="button" className="btn btn-secondary w-100">Submit</button>
+                                        :
+                                        <button onClick={handletestimonialsubmit} type="button" className="btn btn-secondary w-100">Submit</button>
+                                    }
                                 </div>
                             </div>
+                            <br />
+                            {
+                                error_msgs.show_success_msg === true ?
+                                    <>
+                                        <div className="container success_msg_bx w-100">
+                                            <h4>{error_msgs.success_msg}</h4>
+                                        </div>
+                                    </> :
+                                    null
+                            }
+                            {
+                                error_msgs.show_error_msg === true ?
+                                    <>
+                                        <div className="container error_msg_bx w-100">
+                                            <h4>{error_msgs.error_msg}</h4>
+                                        </div>
+                                    </> :
+                                    null
+                            }
                         </div>
                     </section>
-
-
                 </div>
             </Modal>
 

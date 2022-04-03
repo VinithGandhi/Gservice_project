@@ -1,114 +1,724 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { axiosInstance } from '../Services';
 
 
 function BannerMenuComp(props) {
 
+    // db.menu_details.insert([
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department one",
+    //         "url": "department-one",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department two",
+    //         "url": "department-two",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department three",
+    //         "url": "department-three",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department four",
+    //         "url": "department-four",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department five",
+    //         "url": "department-five",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department six",
+    //         "url": "department-six",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department seven",
+    //         "url": "department-seven",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department eight",
+    //         "url": "department-eight",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department nine",
+    //         "url": "department-nine",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department ten",
+    //         "url": "department-ten",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department eleven",
+    //         "url": "department-eleven",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "image_url": "../assets/img/menu_img.png",
+    //         "menu_name": "Department twelve",
+    //         "url": "department-twelve",
+    //         "created_on" : "2022-04-02 20:00:56",
+    //         "updated_on" : "2022-04-02 20:00:56",
+    //         "flag": 1,
+    //         "submenu": [
+    //             {
+    //                 "menu_name": "Serves one",
+    //                 "url": "serves-one"
+    //             },
+    //             {
+    //                 "menu_name": "Serves two",
+    //                 "url": "serves-two"
+    //             },
+    //             {
+    //                 "menu_name": "Serves three",
+    //                 "url": "serves-three"
+    //             },
+    //             {
+    //                 "menu_name": "Serves four",
+    //                 "url": "serves-four"
+    //             },
+    //             {
+    //                 "menu_name": "Serves five",
+    //                 "url": "serves-five"
+    //             },
+    //             {
+    //                 "menu_name": "Serves six",
+    //                 "url": "serves-six"
+    //             },
+    //             {
+    //                 "menu_name": "Serves seven",
+    //                 "url": "serves-seven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eight",
+    //                 "url": "serves-eight"
+    //             },
+    //             {
+    //                 "menu_name": "Serves nine",
+    //                 "url": "serves-nine"
+    //             },
+    //             {
+    //                 "menu_name": "Serves ten",
+    //                 "url": "serves-ten"
+    //             },
+    //             {
+    //                 "menu_name": "Serves eleven",
+    //                 "url": "serves-eleven"
+    //             },
+    //             {
+    //                 "menu_name": "Serves twelve",
+    //                 "url": "serves-twelve"
+    //             }
+    //         ]
+    //     }
+    // ]);
+    
     const [submenus, setSubmenus] = useState([]);
+    const [menudetails, setMenudetails] = useState([]);
     const [activesubmenuname, setActiveSubmenuName] = useState('');
 
-    const mycustmenu = [
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu one',
-            'submenu': [
-                {
-                    'menu_name': 'Transfer of Vehicles '
-                },
-                {
-                    'menu_name': 'Transfer of Vehicles '
-                },
-                {
-                    'menu_name': 'Transfer of Vehicles '
-                },
-                {
-                    'menu_name': 'Transfer of Vehicles '
-                },
-                {
-                    'menu_name': 'Transfer of Vehicles '
-                },
-                {
-                    'menu_name': 'Transfer of Vehicles '
-                },
-            ],
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu two',
-            'submenu': [
-                {
-                    'menu_name': 'menu two'
-                },
-                {
-                    'menu_name': 'menu two'
-                },
-                {
-                    'menu_name': 'menu two'
-                },
-                {
-                    'menu_name': 'menu two'
-                },
-            ],
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu three',
-            'submenu': [
-                {
-                    'menu_name': 'menu three'
-                },
-                {
-                    'menu_name': 'menu three'
-                },
-                {
-                    'menu_name': 'menu three'
-                },
-                {
-                    'menu_name': 'menu three'
-                },
-            ],
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu four',
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu five',
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu six',
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu seven',
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu eight',
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu nine',
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu ten',
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu eleven',
-        },
-        {
-            'image_url': './assets/img/menu_img.png',
-            'menu_name': 'Menu twelve',
-        },
-
-    ];
+    useLayoutEffect(() => {
+        axiosInstance.get('/Menudetails')
+            .then((res) => {
+                setMenudetails(res.data.data);
+            }).catch((error) => {
+                console.log('error');
+            });
+    }, []);
 
     function showDropdown(data, name) {
         var a = document.getElementsByClassName('banner_mega_menu');
@@ -148,7 +758,7 @@ function BannerMenuComp(props) {
             <div className='banner_menu' onMouseLeave={hideDropdown}>
                 <Slider {...settings}>
                     {
-                        mycustmenu.map((value, index) => {
+                        menudetails.map((value, index) => {
                             return (
                                 <div key={index} className='banner_menu_cnt'
                                     onMouseEnter={() => showDropdown(value.submenu, value.menu_name)}>
@@ -174,7 +784,7 @@ function BannerMenuComp(props) {
                                 return (
                                     <Col lg={4} key={index} style={{ paddingBottom: 20 }}>
                                         <div className='megamenu_cnt'>
-                                            <a href='#link'>
+                                            <a href={'/serves/'+value.url}>
                                                 {value.menu_name}
                                             </a>
                                         </div>

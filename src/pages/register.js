@@ -146,7 +146,7 @@ function RegisterPage(props) {
             });
             const JSONvalue = form_datas;
             delete JSONvalue['cpassword'];
-            axiosInstance.post('insertCustomerDetails', JSONvalue)
+            axiosInstance.post('/Register', JSONvalue)
                 .then((res) => {
                     if (res.data.status === 'success') {
                         seterror_msgs({
@@ -166,7 +166,8 @@ function RegisterPage(props) {
                         });
                         setTimeout(() => {
                             cleardatas();
-                        }, 5000);
+                            navigate('/login');
+                        }, 3000);
                     }
                     else if (res.data.status === 'failed') {
                         seterror_msgs({

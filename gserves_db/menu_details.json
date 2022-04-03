@@ -1,0 +1,721 @@
+[{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6ae2"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department one",
+  "url": "department-one",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6ae3"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department two",
+  "url": "department-two",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6ae4"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department three",
+  "url": "department-three",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6ae5"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department four",
+  "url": "department-four",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6ae6"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department five",
+  "url": "department-five",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6ae7"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department six",
+  "url": "department-six",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6ae8"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department seven",
+  "url": "department-seven",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6ae9"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department eight",
+  "url": "department-eight",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6aea"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department nine",
+  "url": "department-nine",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6aeb"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department ten",
+  "url": "department-ten",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6aec"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department eleven",
+  "url": "department-eleven",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62488ff0fcc3c1c3c57c6aed"
+  },
+  "image_url": "../assets/img/menu_img.png",
+  "menu_name": "Department twelve",
+  "url": "department-twelve",
+  "created_on": "2022-04-02 20:00:56",
+  "updated_on": "2022-04-02 20:00:56",
+  "flag": 1,
+  "submenu": [
+    {
+      "menu_name": "Serves one",
+      "url": "serves-one"
+    },
+    {
+      "menu_name": "Serves two",
+      "url": "serves-two"
+    },
+    {
+      "menu_name": "Serves three",
+      "url": "serves-three"
+    },
+    {
+      "menu_name": "Serves four",
+      "url": "serves-four"
+    },
+    {
+      "menu_name": "Serves five",
+      "url": "serves-five"
+    },
+    {
+      "menu_name": "Serves six",
+      "url": "serves-six"
+    },
+    {
+      "menu_name": "Serves seven",
+      "url": "serves-seven"
+    },
+    {
+      "menu_name": "Serves eight",
+      "url": "serves-eight"
+    },
+    {
+      "menu_name": "Serves nine",
+      "url": "serves-nine"
+    },
+    {
+      "menu_name": "Serves ten",
+      "url": "serves-ten"
+    },
+    {
+      "menu_name": "Serves eleven",
+      "url": "serves-eleven"
+    },
+    {
+      "menu_name": "Serves twelve",
+      "url": "serves-twelve"
+    }
+  ]
+}]

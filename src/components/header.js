@@ -1,19 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Container, Navbar, NavDropdown, Nav, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faCircleUser, faCartShopping, faBars, faLocationDot, faGear, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { axiosInstance } from '../Services';
+import { Base64 } from 'js-base64';
 
 
 function HeaderComp(props) {
+    const [menudetails, setMenudetails] = useState([]);
     const [show, setShow] = useState(false);
     const [showlogg, setShowlogg] = useState(false);
     const [loggingstatus, setloggingstatus] = useState(false);
     const [loggedusername, setloggedusername] = useState('');
 
+    useLayoutEffect(() => {
+        axiosInstance.get('/Menudetails')
+            .then((res) => {
+                setMenudetails(res.data.data);
+            }).catch((error) => {
+                console.log('error');
+            });
+    }, []);
+
     useEffect(() => {
         if (localStorage.getItem('logging_status') !== null && localStorage.getItem('logging_status') !== undefined) {
             setloggingstatus(localStorage.getItem('logging_status'));
-            setloggedusername(localStorage.getItem('username'));
+            setloggedusername(Base64.decode(localStorage.getItem('gsun')));
         } else {
             setloggingstatus(false);
         }
@@ -32,7 +44,7 @@ function HeaderComp(props) {
         setShowlogg(false);
     }
 
-    function handlelogout(){
+    function handlelogout() {
         localStorage.clear();
         window.location.reload();
     }
@@ -55,23 +67,18 @@ function HeaderComp(props) {
                                 onMouseEnter={showDropdown}
                                 onMouseLeave={hideDropdown}
                             >
-                                <NavDropdown.Item href="/service">Menu one</NavDropdown.Item>
-                                <NavDropdown.Item href="/service">Menu two</NavDropdown.Item>
-                                <NavDropdown.Item href="/service">Menu three</NavDropdown.Item>
-                                <NavDropdown.Item href="/service">Menu four</NavDropdown.Item>
-                                <NavDropdown.Item href="/service">Menu five</NavDropdown.Item>
-                                <NavDropdown.Item href="/service">Menu six</NavDropdown.Item>
-                                <NavDropdown.Item href="/service">Menu seven</NavDropdown.Item>
-                                <NavDropdown.Item href="/service">Menu eight</NavDropdown.Item>
-                                <NavDropdown.Item href="/service">Menu nine</NavDropdown.Item>
-                                <NavDropdown.Item href="/service">Menu ten</NavDropdown.Item>
+                                {menudetails.map((value, index) => {
+                                    return (
+                                        <NavDropdown.Item key={index} href="#">{value.menu_name}</NavDropdown.Item>
+                                    );
+                                })}
                             </NavDropdown>
                             <Nav.Link className='text-white' href="#link"> <FontAwesomeIcon icon={faLocationDot} /> &nbsp;Bengaluru</Nav.Link>
                         </Nav>
                     </Col>
                     <Col lg={4} className="text-center">
                         <a href="/">
-                            <img src="./assets/img/logo.png" width="160px" alt={'logo'} />
+                            <img src="../assets/img/logo.png" width="160px" alt={'logo'} />
                         </a>
                     </Col>
                     <Col lg={4} >

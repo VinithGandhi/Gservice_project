@@ -16,7 +16,7 @@ const Pages = () => {
                 <Route exact path="/" element={<HomePage />} />
                 <Route exact path="/login" element={<LoginPage />} />
                 <Route exact path="/register" element={<RegisterPage />} />
-                <Route exact path="/service" element={<ServicesPage />} />
+                <Route exact path="/serves/:servesname" element={<ServicesPage />} />
             </Routes>
         </Router>
     );
