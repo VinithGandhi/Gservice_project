@@ -109,8 +109,8 @@ function RegisterPage(props) {
         if (!form_datas.password) {
             password_errormsg = "Password cannot be blank";
         }
-        else if (form_datas.password < 8) {
-            password_errormsg = "Password should be 8 characters";
+        else if (form_datas.password.length < 8) {
+            password_errormsg = "Password must have at least 8 characters";
         }
         else if (!strongRegex.test(form_datas.password)) {
             password_errormsg = "use special character, number and capital letter";
