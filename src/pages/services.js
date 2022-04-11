@@ -18,6 +18,7 @@ function ServicesPage(props) {
 
     const [showComments, setshowComments] = useState(false);
     const [servesdata, setservesdata] = useState([]);
+    const [checkedaddonvalues, setcheckedaddonvalues] = useState([]);
     const [loggingstatus, setloggingstatus] = useState(false);
     const [loggedusername, setloggedusername] = useState('');
     useEffect(() => {
@@ -219,6 +220,40 @@ function ServicesPage(props) {
     }
     function navigatetohone() {
         navigate("/");
+    }
+
+    function handelonchangecheckbox(e) {
+        if (e.target.checked == true) {
+            let myvalue = checkedaddonvalues;
+            myvalue.push(e.target.value)
+            setcheckedaddonvalues(myvalue);
+        }
+        if (e.target.checked == false) {
+            let myvalue = checkedaddonvalues;
+            var filteredArray = myvalue.filter(l => l !== e.target.value);
+            // myvalue.push()
+            setcheckedaddonvalues(filteredArray);
+        }
+    }
+
+    function handeladdtocartsubmit() {
+        var url = window.location.href;
+        var parts = url.split('/');
+        let mydatas = {
+            "addonvalues": checkedaddonvalues,
+            "userid": Base64.decode(localStorage.getItem('gsud')),
+            "service_name": parts[4]
+        }
+
+        axiosInstance.post('/Addtocart', mydatas)
+            .then((res) => {
+                if (res.data.status === 'success') {
+                    closecartmodal();
+                }
+            })
+            .catch(() => {
+                console.log('Something went wrong please try again');
+            });
     }
 
 
@@ -677,7 +712,7 @@ function ServicesPage(props) {
                                                         <ul style={{ paddingInlineStart: '2px', textAlign: 'left', listStyleType: 'none', cursor: "pointer" }}>
                                                             {servesdata[0]["addon_lis"].map((value, index) => {
                                                                 return (
-                                                                    <li style={{ padding: "6px" }} key={index}><input type="checkbox" className="input-assumpte" /> {value.addon_name}</li>
+                                                                    <li style={{ padding: "6px" }} key={index}><input onChange={handelonchangecheckbox} name={"addoncheckbox" + index} value={value.addon_name} type="checkbox" className="input-assumpte" /> {value.addon_name}</li>
                                                                 );
                                                             })}
                                                         </ul>
@@ -692,7 +727,7 @@ function ServicesPage(props) {
                                     <div className="col-8">
                                     </div>
                                     <div className="col-4">
-                                        <button type="button" className="btn btn-secondary w-100">processed</button>
+                                        <button type="button" className="btn btn-secondary w-100" onClick={handeladdtocartsubmit}>processed</button>
                                     </div>
                                 </div>
                             </div>

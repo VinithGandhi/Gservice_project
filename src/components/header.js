@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faCircleUser, faCartShopping, faBars, faLocationDot, faGear, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { axiosInstance } from '../Services';
 import { Base64 } from 'js-base64';
+import { slide as Menu } from 'react-burger-menu'
 
 
 function HeaderComp(props) {
