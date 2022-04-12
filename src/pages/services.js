@@ -11,7 +11,7 @@ import { Base64 } from 'js-base64';
 import { axiosInstance } from '../Services';
 import { useNavigate } from "react-router-dom";
 import SearchComp from '../components/search';
-
+  
 
 function ServicesPage(props) {
     const navigate = useNavigate();
