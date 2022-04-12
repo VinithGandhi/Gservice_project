@@ -239,74 +239,94 @@ function RegisterPage(props) {
                     <div className="container">
                         <div style={{ padding: 2 }}>
                             <div className="row">
-                                <div className="col-md-4 offset-md-4">
-                                    <div className="form-group mb-3">
-                                        <div className="input-group">
-                                            <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faUser} /></span>
+                                <div className="col-md-8 offset-md-2">
+                                    <div className="row mb-4">
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <div className="input-group">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faUser} /></span>
+                                                    </div>
+                                                    <input type="text" className="form-control" placeholder="First Name" name="first_name" value={form_datas.first_name} onChange={handleInputChange} />
+                                                </div>
+                                                {form_errormsg.first_name_errormsg !== '' ?
+                                                    <span className='error_msg'>{form_errormsg.first_name_errormsg}</span> : <></>}
                                             </div>
-                                            <input type="text" className="form-control" placeholder="First Name" name="first_name" value={form_datas.first_name} onChange={handleInputChange} />
                                         </div>
-                                        {form_errormsg.first_name_errormsg !== '' ?
-                                            <span className='error_msg'>{form_errormsg.first_name_errormsg}</span> : <></>}
-                                    </div>
-                                    <div className="form-group mb-3">
-                                        <div className="input-group">
-                                            <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faUser} /></span>
-                                            </div>
-                                            <input type="text" className="form-control" placeholder="Last Name" name="last_name" value={form_datas.last_name} onChange={handleInputChange} />
-                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <div className="input-group">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faUser} /></span>
+                                                    </div>
+                                                    <input type="text" className="form-control" placeholder="Last Name" name="last_name" value={form_datas.last_name} onChange={handleInputChange} />
+                                                </div>
 
-                                        {form_errormsg.last_name_errormsg !== '' ?
-                                            <span className='error_msg'>{form_errormsg.last_name_errormsg}</span> : <></>}
-                                    </div>
-                                    <div className="form-group mb-3">
-                                        <div className="input-group">
-                                            <div className="input-group-prepend">
-                                                <span className="input-group-text" id="" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faMobile} /></span>
+                                                {form_errormsg.last_name_errormsg !== '' ?
+                                                    <span className='error_msg'>{form_errormsg.last_name_errormsg}</span> : <></>}
                                             </div>
-                                            <input type="text" className="form-control" placeholder="+91" disabled />
-                                            <input type="text" className="form-control" data-inputmask="'mask': '99999 99999'" placeholder="Mobile number" style={{ width: '60%' }} name="mobile_no" value={form_datas.mobile_no} onChange={handleInputChange} maxLength={10} />
                                         </div>
-                                        {form_errormsg.mobile_no_errormsg !== '' ?
-                                            <span className='error_msg'>{form_errormsg.mobile_no_errormsg}</span> : <></>}
                                     </div>
-                                    <div className="form-group mb-3">
-                                        <div className="input-group">
-                                            <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faEnvelope} /></span>
+
+                                    <div className="row mb-4">
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <div className="input-group">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faMobile} /></span>
+                                                    </div>
+                                                    <input type="text" className="form-control" placeholder="+91" disabled />
+                                                    <input type="text" className="form-control" data-inputmask="'mask': '99999 99999'" placeholder="Mobile number" style={{ width: '60%' }} name="mobile_no" value={form_datas.mobile_no} onChange={handleInputChange} maxLength={10} />
+                                                </div>
+                                                {form_errormsg.mobile_no_errormsg !== '' ?
+                                                    <span className='error_msg'>{form_errormsg.mobile_no_errormsg}</span> : <></>}
                                             </div>
-                                            <input type="email" className="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" name="email_id" value={form_datas.email_id} onChange={handleInputChange} />
                                         </div>
-                                        {form_errormsg.email_id_errormsg !== '' ?
-                                            <span className='error_msg'>{form_errormsg.email_id_errormsg}</span> : <></>}
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <div className="input-group">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faEnvelope} /></span>
+                                                    </div>
+                                                    <input type="email" className="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" name="email_id" value={form_datas.email_id} onChange={handleInputChange} />
+                                                </div>
+                                                {form_errormsg.email_id_errormsg !== '' ?
+                                                    <span className='error_msg'>{form_errormsg.email_id_errormsg}</span> : <></>}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="form-group mb-3">
-                                        <div className="input-group">
-                                            <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faLock} /></span>
-                                            </div>
-                                            <input type="password" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" name="password" value={form_datas.password} onChange={handleInputChange} />
-                                        </div>
-                                        {/* {form_errormsg.password_errormsg !== '' ?
-                                            <span className='error_msg'>{form_errormsg.password_errormsg}</span> : <></>} */}
-                                    </div>
-                                    <div className="form-group mb-3">
-                                        <div className="input-group">
-                                            <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faLock} /></span>
-                                            </div>
-                                            <input type="password" className="form-control" placeholder="Confirm password" aria-label="Confirm_password" aria-describedby="basic-addon1" name="cpassword" value={form_datas.cpassword} onChange={handleInputChange} />
-                                        </div>
-                                        {form_errormsg.password_errormsg !== '' ?
+
+                                    <div className="row mb-4">
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <div className="input-group">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faLock} /></span>
+                                                    </div>
+                                                    <input type="password" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" name="password" value={form_datas.password} onChange={handleInputChange} />
+                                                </div>
+                                                {form_errormsg.password_errormsg !== '' ?
                                             <span className='error_msg'>{form_errormsg.password_errormsg}</span> : <></>}
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <div className="input-group">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="basic-addon1" style={{ padding: '.75rem' }}><FontAwesomeIcon icon={faLock} /></span>
+                                                    </div>
+                                                    <input type="password" className="form-control" placeholder="Confirm password" aria-label="Confirm_password" aria-describedby="basic-addon1" name="cpassword" value={form_datas.cpassword} onChange={handleInputChange} />
+                                                </div>
+                                                {/* {form_errormsg.password_errormsg !== '' ?
+                                                    <span className='error_msg'>{form_errormsg.password_errormsg}</span> : <></>} */}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="row">
-                                <div className="col-md-4 offset-md-4">
+                            <div className="col-md-6 offset-md-3">
                                     <div className="row">
                                         <div className="col-6">
                                             <button onClick={navigatetohone} type="button" className="btn btn-secondary btn-block w-100" >
@@ -346,7 +366,7 @@ function RegisterPage(props) {
 
                 <section>
                     <div className="container" style={{ paddingTop: 20, paddingBottom: 60 }}>
-                        <div className="row">
+                        <div className="row mb-2">
                             <div className="col-md-4 offset-md-4">
                                 <div className="text-center">
                                     <h5><span style={{ color: '#6c757d', fontWeight: 600 }}>Login with</span></h5>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck, faCalendarCheck, faList, faCartPlus, faAnglesRight, faUserCircle, faMobile, faLock, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import HeaderComp from '../components/header';
@@ -245,7 +245,7 @@ function ServicesPage(props) {
             "service_name": parts[4]
         }
 
-        axiosInstance.post('/Addtocart', mydatas)
+        axiosInstance.post('/Register', mydatas)
             .then((res) => {
                 if (res.data.status === 'success') {
                     closecartmodal();
@@ -712,7 +712,18 @@ function ServicesPage(props) {
                                                         <ul style={{ paddingInlineStart: '2px', textAlign: 'left', listStyleType: 'none', cursor: "pointer" }}>
                                                             {servesdata[0]["addon_lis"].map((value, index) => {
                                                                 return (
-                                                                    <li style={{ padding: "6px" }} key={index}><input onChange={handelonchangecheckbox} name={"addoncheckbox" + index} value={value.addon_name} type="checkbox" className="input-assumpte" /> {value.addon_name}</li>
+                                                                    <li style={{ padding: "6px" }} key={index}>
+                                                                        <Form>
+                                                                            <Form.Group onChange={handelonchangecheckbox} className="mb-1" controlId={"formBasicCheckbox"+index}>
+                                                                                <Form.Check type="checkbox" label={value.addon_name+" - "+ value.addon_details} name={"addoncheckbox" + index} value={value.addon_name} />
+                                                                            </Form.Group>
+                                                                        </Form>
+
+                                                                        {/* <input onChange={handelonchangecheckbox} name={"addoncheckbox" + index} value={value.addon_name} type="checkbox" className="input-assumpte" />
+                                                                        {value.addon_name}<br />
+                                                                        <span> {value.addon_details}</span> */}
+
+                                                                    </li>
                                                                 );
                                                             })}
                                                         </ul>

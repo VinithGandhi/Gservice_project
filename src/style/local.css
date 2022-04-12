@@ -752,3 +752,60 @@ select.list-dt:focus {
   border-bottom: 1px solid #8080805e;
   cursor: pointer;
 }
+
+.fixed-top {
+  z-index: 999;
+}
+
+
+#page-wrap {
+  text-align: center;
+  overflow: auto;
+  top: 45%;
+  position: relative;
+}
+
+.bm-item {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  margin-bottom: 13px;
+  transition: color 0.2s;
+}
+
+.bm-item:hover {
+  color: #000;
+}
+
+.bm-burger-button {
+  display: none;
+}
+
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #000;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #fff;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.menu-item-sizebar:hover {
+  color: #09988e;
+}

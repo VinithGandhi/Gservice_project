@@ -13,7 +13,14 @@ class TestimonialsMod extends CI_Model
 
     public function getTestimonials()
     {
-        $testimonials_details = $this->mongo_db->select([])->get("testimonials_details");        
+        $testimonials_details = $this->mongo_db->select([])->limit(30)->get("testimonials_details");  
+        if (sizeof($testimonials_details)>0) 
+        {
+            for ($i=0; $i < sizeof($testimonials_details); $i++) 
+            { 
+                $testimonials_details[$i]["formated_date"] = date("d-M-y",strtotime($testimonials_details[$i]["updated_on"]));
+            }
+        }
         $result['status'] = "success";
         $result['statusCode'] = "200";
         $result['data'] = $testimonials_details;

@@ -9,15 +9,14 @@ class Testimonials extends CI_Controller {
 	    $this->load->model('TestimonialsMod');
    }
 
-        public function index()
-        {
+    public function index()
+    {
         header('Access-Control-Allow-Origin: *');
         header ("Access-Control-Allow-Headers: *");
         header('Content-Type: application/json');
-        //$valuesInHeader = $this->input->request_headers();
         $output = $this->TestimonialsMod->getTestimonials();
         echo json_encode($output);
-        }
+    }
    
 	public function insert()
 	{

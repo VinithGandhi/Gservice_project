@@ -37,14 +37,14 @@ function HomePage(props) {
                 settestimonials(res.data.data);
                 let datsss = res.data.data;
                 if (localStorage.getItem('logging_status') !== null && localStorage.getItem('logging_status') !== undefined) {
-                    let country = datsss.find(el => el.user_id === Base64.decode(localStorage.getItem('gsud')));
-                    if (country !== undefined) {
+                    let mydata_v = datsss.find(el => el.user_id === Base64.decode(localStorage.getItem('gsud')));
+                    if (mydata_v !== undefined) {
                         setedittestimonials(true);
                         setFomdatas({
                             ...form_datas,
-                            testimonial_msg: country["message"],
-                            username: country["user_name"],
-                            userid: country["user_id"],
+                            testimonial_msg: mydata_v["message"],
+                            username: mydata_v["user_name"],
+                            userid: mydata_v["user_id"],
                         });
                     }
                 }
@@ -436,7 +436,9 @@ function HomePage(props) {
                                                     {value.message}
                                                 </p>
                                                 <br />
-                                                <footer style={{ fontSize: '14px' }} className="blockquote-footer"><cite title="Source Title">{value.user_name}</cite>
+                                                <footer style={{ fontSize: '14px' }} className="blockquote-footer">
+                                                    <cite title="Source Title">{value.user_name}</cite>
+                                                    <cite title="Source Title"> - {value.formated_date}</cite>
                                                 </footer>
                                             </div>
                                         );
@@ -457,13 +459,15 @@ function HomePage(props) {
                                         </Col>
                                     </Row>
                                     :
-                                    <Row style={{ paddingTop: 5, paddingBottom: 20 }}>
-                                        <Col className='text-center'>
-                                            <button onClick={openmodal} type="button" className="btn btn-secondary">
-                                                Submit Testomonial
-                                            </button>
-                                        </Col>
-                                    </Row>}
+                                    // <Row style={{ paddingTop: 5, paddingBottom: 20 }}>
+                                    //     <Col className='text-center'>
+                                    //         <button onClick={openmodal} type="button" className="btn btn-secondary">
+                                    //             Submit Testomonial
+                                    //         </button>
+                                    //     </Col>
+                                    // </Row>
+                                    null
+                                    }
                             </>
                             : null}
                     </Container>
